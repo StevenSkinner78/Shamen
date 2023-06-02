@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<MenuConfig>
+	<Displayers> 
+		<Displayer   name="TabbedMenu" type="gov.doc.isu.taglib.ShamenTabbedMenuDisplayer" />
+	</Displayers>
+	<Menus>
+		<Menu name="OverviewLink" title="label.tabs.overview" location="overviewAction.do?method=resetCover" toolTip="label.tabs.overview.tooltip" roles="ADMN,USER" description="true"/>
+		<Menu name="CalendarLink" title="label.tabs.calendar" location="calendarAction.do?method=showCalendar" toolTip="label.tabs.calendar.tooltip" roles="ADMN,USER" description="true"/>
+		<Menu name="AdminLink" title="label.tabs.admin" location="userAction.do?method=list" description="true" roles="ADMN" toolTip="label.tabs.admin.tooltip">
+			<Item name="AdminInfoLink" title="label.tabs.admin.info" toolTip="label.tabs.admin.info.tooltip" location="#" roles="ADMN" description="false"/>
+			<Item name="AddUserLink" title="label.tabs.admin.add" toolTip="label.tabs.admin.add.tooltip" roles="ADMN" location="userDetailAction.do?method=addUser" description="true"/>
+		</Menu>
+		<Menu name="SystemLink" title="label.tabs.system" location="systemAction.do?method=list" description="true" roles="ADMN,USER" toolTip="label.tabs.system.tooltip" >
+			<Item name="AddSystemLink" title="label.tabs.system.add" location="systemDetailAction.do?method=addSystem" roles="ADMN" description="true" toolTip="label.tabs.system.add.tooltip"/>
+		</Menu>
+		<Menu name="SystemInfoLink" title="label.tabs.system.info" toolTip="label.tabs.system.info.tooltip" action="#" roles="ADMN,USER" description="false">
+			<Item name="AddAppLink" title="label.tabs.app.add" toolTip="label.tabs.app.add.tooltip" roles="ADMN" location="applicationDetailAction.do?method=addApplication&amp;caller=system" description="true" onclick="addParams(this)"/>
+			<Item name="AddBatchLink" title="label.tabs.batch.add" toolTip="label.tabs.batch.add.tooltip" roles="ADMN" location="batchDetailAction.do?method=addBatch&amp;caller=system" description="true" onclick="addParams(this)"/>
+			<Item name="AddCollectionLink" title="label.tabs.batch.add.collection" toolTip="label.tabs.batch.add.collection.tooltip" roles="ADMN" location="batchCollectionDetailAction.do?method=addBatch&amp;caller=system"  description="true" onclick="addParams(this)"/>
+		</Menu>
+		<Menu name="ApplicationLink" title="label.tabs.app"  location="applicationAction.do?method=list" description="true" roles="ADMN,USER" toolTip="label.tabs.app.tooltip" >
+			<Item name="ApplicationInfoLink" title="label.tabs.app.info" toolTip="label.tabs.app.info.tooltip" location="#" roles="ADMN,USER" description="false"/>
+			<Item name="AddAppLink" title="label.tabs.app.add" toolTip="label.tabs.app.add.tooltip" location="applicationDetailAction.do?method=addApplication" roles="ADMN" description="true"/>
+		</Menu>
+		<Menu name="ControllerLink" title="label.tabs.controller"  location="controllerAction.do?method=list" description="true" roles="ADMN,USER" toolTip="label.tabs.controller.tooltip">
+			<Item name="AddControllerLink" title="label.tabs.controller.add" toolTip="label.tabs.controller.add.tooltip" roles="ADMN" location="controllerDetailAction.do?method=addController" description="true"/>
+		</Menu>
+		<Menu name="ControllerInfoLink" title="label.tabs.controller.info" toolTip="label.tabs.controller.info.tooltip" roles="ADMN,USER" action="#" description="false">
+			<Item name="AddBatchLink" title="label.tabs.batch.add" toolTip="label.tabs.batch.add.tooltip" roles="ADMN" location="batchDetailAction.do?method=addBatch&amp;caller=controllerInfo" description="true" onclick="addParams(this)"/>
+			<Item name="AddCollectionLink" title="label.tabs.batch.add.collection" toolTip="label.tabs.batch.add.collection.tooltip" roles="ADMN" location="batchCollectionDetailAction.do?method=addBatch&amp;caller=controllerInfo"  description="true" onclick="addParams(this)"/>
+			<Item name="Activateink" title="label.tabs.batch.activate" toolTip="label.tabs.batch.activate.tooltip" roles="ADMN" location="controllerDetailAction.do?method=updateAllBatch&amp;activate=Y&amp;caller=controllerInfo" description="true" onclick="addParams(this)"/>
+			<Item name="DeactivateLink" title="label.tabs.batch.deactivate" toolTip="label.tabs.batch.deactivate.tooltip" roles="ADMN" location="controllerDetailAction.do?method=updateAllBatch&amp;activate=N&amp;caller=controllerInfo"  description="true" onclick="addParams(this)"/>
+		</Menu>
+		<Menu name="BatchLink" title="label.tabs.batch" toolTip="label.tabs.batch.tooltip" location="batchAction.do?method=list" roles="ADMN,USER" description="true">
+			<Item name="AddBatchLink" title="label.tabs.batch.add" toolTip="label.tabs.batch.add.tooltip" roles="ADMN" location="batchDetailAction.do?method=addBatch&amp;caller=batchList" description="true"/>
+		</Menu>
+		<Menu name="BatchInfoLink" title="label.tabs.batch.info" toolTip="label.tabs.batch.info.tooltip" location="#" roles="ADMN,USER" description="false">
+			<Item name="Activateink" title="label.tabs.batch.activate"  toolTip="label.tabs.batch.activate.tooltip" roles="ADMN" location="batchDetailAction.do?method=updateAll&amp;activate=Y" description="false"/>
+			<Item name="DeactivateLink" title="label.tabs.batch.deactivate"  toolTip="label.tabs.batch.deactivate.tooltip" roles="ADMN" location="batchDetailAction.do?method=updateAll&amp;activate=N"  description="false"/>
+		</Menu>
+		<Menu name="BatchCollectionLink" title="label.tabs.batch.collection" toolTip="label.tabs.batch.collection.tooltip" roles="ADMN,USER"  location="batchCollectionAction.do?method=list" description="true">
+			<Item name="AddCollectionLink" title="label.tabs.batch.add.collection" toolTip="label.tabs.batch.add.collection.tooltip" roles="ADMN" location="batchCollectionDetailAction.do?method=addBatch&amp;caller=batchCollectionList"  description="true"/>
+		</Menu>
+		<Menu name="BatchCollectionInfoLink" title="label.tabs.batch.collection.info" toolTip="label.tabs.batch.collection.info.tooltip" roles="ADMN,USER" location="#" description="false">
+			<Item name="Activateink" title="label.tabs.batch.activate" toolTip="label.tabs.batch.activate.tooltip" roles="ADMN" location="batchCollectionDetailAction.do?method=updateAll&amp;activate=Y" description="true"/>
+			<Item name="DeactivateLink" title="label.tabs.batch.deactivate"  toolTip="label.tabs.batch.deactivate.tooltip" roles="ADMN" location="batchCollectionDetailAction.do?method=updateAll&amp;activate=N"  description="true"/>
+		</Menu>
+		<Menu name="StatusLink" title="label.tabs.status" toolTip="label.tabs.status.tooltip"  location="statusAction.do?method=list" roles="ADMN,USER" description="true"/>
+		<Menu name="StatLink" title="label.tabs.stat" toolTip="label.tabs.stat.tooltip"  location="statDetailAction.do?method=loadPage" roles="ADMN" description="true">
+			<Item name="BatchAppDurLink" title="label.tabs.stat.performance" toolTip="label.tabs.stat.performance.tooltip" roles="ADMN" location="statDetailAction.do?method=resetStats" description="false"/>
+			<Item name="UserStatLink" title="label.tabs.stat.user" toolTip="label.tabs.stat.user.tooltip" roles="ADMN" location="statDetailAction.do?method=loadUserData" description="false"/>
+			<Item name="SystemStatLink" title="label.tabs.stat.system" toolTip="label.tabs.stat.system.tooltip" roles="ADMN" location="statDetailAction.do?method=loadSystemData" description="false"/>
+		</Menu>
+	</Menus>
+</MenuConfig>

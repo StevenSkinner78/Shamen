@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+ 
+<!-- 	
+	SVG: 	Shamen Web System Hierarchy
+	Artist: Jim Cox (JCCC)
+	Date: 	December 15, 2017  
+	Copyright (C) ISU/JCCC, ITSD/DOC, MoDOC  
+--> 
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="System_Hierarchy" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="250px" viewBox="0 0 196 30" enable-background="new 0 0 196 30" xml:space="preserve">
+
+	<polyline fill="none" stroke="#00AEEF" stroke-miterlimit="10" points="57.083,11.577 70.417,15 57.083,4.468 "/>
+	<polyline fill="none" stroke="#00AEEF" stroke-miterlimit="10" points="57.083,25.5 70.417,15 57.083,18.646 "/>
+	<polyline fill="none" stroke="#00AEEF" stroke-miterlimit="10" points="139.137,11.145 125.803,14.567 139.137,4.035 "/>
+	<polyline fill="none" stroke="#00AEEF" stroke-miterlimit="10" points="139.137,25.067 125.803,14.567 139.137,18.213 "/>
+	<rect x="2.995" y="1.913" fill="#EBB056" width="54.833" height="5.029"/>
+	<rect x="2.934" y="9.063" fill="#EBB056" width="54.833" height="5.029"/>
+	<rect x="2.934" y="16.09" fill="#EBB056" width="54.833" height="5.029"/>
+	<rect x="2.995" y="22.513" fill="#EBB056" width="54.833" height="5.029"/>
+	<rect x="138.196" y="1.954" fill="#EBB056" width="54.834" height="5.029"/>
+	<rect x="138.136" y="9.103" fill="#EBB056" width="54.834" height="5.029"/>
+	<rect x="138.136" y="16.131" fill="#EBB056" width="54.834" height="5.029"/>
+	<rect x="138.196" y="22.553" fill="#EBB056" width="54.834" height="5.029"/>
+	<rect x="70" y="12.063" fill="#3CB371" width="56" height="5.875"/>
+</svg>

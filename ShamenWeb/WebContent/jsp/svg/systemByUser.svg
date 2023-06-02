@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 	
+	SVG: 	Shamen Web System By User
+	Artist: Jim Cox (JCCC)
+	Date: 	December 15, 2017  
+	Copyright (C) ISU/JCCC, ITSD/DOC, MoDOC  
+--> 
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="System_By_User" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="250" viewBox="0 0 1037 687" enable-background="new 0 0 1037 687" xml:space="preserve">
+
+<g id="Bars">
+	<rect x="120.825" y="162.458" fill="#83548B" width="97.999" height="474.051"/>
+	<rect x="319.934" y="84.1" fill="#83548B" width="97.999" height="552.638"/>
+	<rect x="718.217" y="479.521" fill="#83548B" width="97.998" height="156.987"/>
+	<rect x="21.177" y="399.713" fill="#557EAA" width="97.376" height="236.796"/>
+	<rect x="220.286" y="83.87" fill="#557EAA" width="98.626" height="552.639"/>
+	<rect x="816.215" y="558.68" fill="#557EAA" width="99.999" height="77.829"/>
+	<polygon fill="#557EAA" points="417.834,636.509 319.626,636.509 319.934,240.806 418.183,240.806 	"/>
+	<rect x="21.299" y="478.073" fill="#EBB056" width="97.254" height="158.436"/>
+	<rect x="219.563" y="557.724" fill="#EBB056" width="99.58" height="78.785"/>
+	<rect x="319.567" y="557.724" fill="#EBB056" width="98.365" height="78.785"/>
+	<rect x="418.973" y="558.106" fill="#EBB056" width="99.008" height="78.402"/>
+	<polygon fill="#EBB056" points="617.046,636.46 518.681,636.509 518.681,558.056 617.046,558.056 	"/>
+	<polygon fill="#EBB056" points="716.975,636.537 618.383,636.537 618.383,558.056 716.975,558.016 	"/>
+	<rect x="915.773" y="557.474" fill="#EBB056" width="99.58" height="79.063"/>
+</g>
+
+</svg>

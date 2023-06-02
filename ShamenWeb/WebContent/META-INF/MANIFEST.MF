@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: ShamenEJB.jar 
+ log4j-1.2.15.jar
+

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+                        "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_2.dtd">
+<taglib>
+	<tlib-version>1.1</tlib-version>
+	<jsp-version>1.2</jsp-version>
+	<short-name>isu-taglib</short-name>
+	<uri>http://gov.doc.isu.taglib/isu-taglib</uri>
+	<display-name>ISU *: Tag Library</display-name>
+	<tag>
+		<name>creditPage</name>
+		<tag-class>gov.doc.isu.taglib.CreditPageTag</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+				This tag constructs the link for forwarding to the credit and about page.
+		</description>
+		<attribute>
+			<name>path</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+			<description>
+				This is the path to the credits.html.
+			</description>
+		</attribute>
+		<attribute>
+			<name>imagePath</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This is the path to the icon for the link. Otherwise it will be a "|",
+			</description>
+		</attribute>
+		<attribute>
+			<name>anchorClass</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				The anchor html class attribute.
+			</description>
+		</attribute>
+		<attribute>
+			<name>imageClass</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				The html class attribute for the <i> </i> tag.
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>multiTransferBox</name>
+		<tag-class>gov.doc.isu.taglib.OrderableMultiTransferBoxTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>className</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>firstSelectId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>secondSelectId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>addButtonId</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>removeButtonId</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>listName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>optionBeanMap</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>createButtonId</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>createButtonLabel</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>searchRequired</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>createdList</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>selectedProperty</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>authorizedUser</name>
+		<tag-class>gov.doc.isu.taglib.AuthorizedUserTag</tag-class>
+		<body-content>empty</body-content>
+		<display-name>authorizedUser</display-name>
+		<description>
+			A simple text display that describes each Authority
+			Level. There are
+			no attributes for this tag.
+			It is used on the
+			authorizedUser.jsp for Administrators adding/editing
+			Users.
+		</description>
+		<attribute>
+			<name>formName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				The id of the bean:define used for this page
+			</description>
+		</attribute>
+		<attribute>
+			<name>levelSelect</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>int</type>
+			<description>
+				Determines which levels to be shown in drop down.
+				default 0 shows all. 1 shows
+				user and authority. 2 shows view and
+				authority.
+				if any number is put in besides 0,1, or 2 only authority
+				will show.
+			</description>
+		</attribute>
+		<example>
+			&lt;shamen:authorizedUser /&gt; </example>
+	</tag>
+	<tag>
+		<name>useMenuDisplayer</name>
+		<tag-class>gov.doc.isu.taglib.ShamenUseMenuDisplayerTag</tag-class>
+		<body-content>JSP</body-content>
+		<display-name>useMenuDisplayer</display-name>
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>bundle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>config</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>locale</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>permissions</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>repository</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>displayMenu</name>
+		<tag-class>gov.doc.isu.taglib.ShamenDisplayMenuTag</tag-class>
+		<body-content>JSP</body-content>
+		<display-name>displayMenu</display-name>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>target</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="true">
+
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ABSOLUTE} %5p %c{1}:%L - %m%n"/>
+		</layout>
+	</appender>
+
+	<appender name="appLog" class="gov.doc.isu.log.appender.MultiRollingFileAppender">
+		<param name="file" value="c:/temp/ShamenWeb/AppLog.log"/>
+		<param name="append" value="true"/>
+		<param name="maxFileSize" value="20MB"/>
+		<param name="maxBackupIndex" value="9"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<param name="encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{MM/dd/yyyy HH:mm:ss,SSS} %-6r [%t] %-5p %c %x - %m%n"/>
+		</layout>
+	</appender>
+
+
+	<appender name="responseOverrideFilter" class="gov.doc.isu.log.appender.MultiRollingFileAppender">
+		<param name="file" value="c:/temp/ShamenWeb/ResponseOverrideFilter.log"/>
+		<param name="append" value="true"/>
+		<param name="maxFileSize" value="20MB"/>
+		<param name="maxBackupIndex" value="9"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<param name="encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{MM/dd/yyyy HH:mm:ss,SSS} %-6r [%t] %-5p %c %x - %m%n"/>
+		</layout>
+	</appender>
+
+	<appender name="HTTPRequestFilter" class="gov.doc.isu.log.appender.MultiRollingFileAppender">
+		<param name="file" value="c:/temp/ShamenWeb/HTTPRequestFilter.log"/>
+		<param name="append" value="true"/>
+		<param name="maxFileSize" value="20MB"/>
+		<param name="maxBackupIndex" value="9"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<param name="encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{MM/dd/yyyy HH:mm:ss,SSS} %-6r [%t] %-5p %c %x - %m%n"/>
+		</layout>
+	</appender>
+
+	<!-- Appender for User status log -->
+	<appender name="userStatusSessionLog" class="gov.doc.isu.log.appender.MultiRollingFileAppender">
+		<param name="File" value="c:/temp/ShamenWeb/UserStatus.log"/>
+		<param name="append" value="true"/>
+		<param name="maxFileSize" value="20MB"/>
+		<param name="maxBackupIndex" value="9"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<param name="encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{MM/dd/yyyy HH:mm:ss,SSS} - %m%n"/>
+		</layout>
+	</appender>
+
+	<!-- org.apache logger's level will be turned on dynamically with the build script as it is verbose -->
+	<logger name="org.apache">
+		<level value="OFF"/>
+	</logger>
+
+	<logger name="gov.doc.isu">
+		<level value="INFO"/>
+	</logger>
+
+	<!-- dwarf logger's level will be turned on dynamically with the build script as it is verbose -->
+	<logger name="gov.doc.isu.dwarf">
+		<level value="OFF"/>
+	</logger>
+
+	<!-- waffle logger's level will be turned on dynamically with the build script as it is verbose -->
+	<logger name="waffle">
+		<level value="OFF"/>
+	</logger>
+	<logger name="net.sf.navigator.menu">
+		<level value="OFF"/>
+	</logger>
+
+	<logger name="gov.doc.isu.shamen">
+		<level value="INFO"/>
+	</logger>
+	
+	<logger name="gov.doc.isu.shamen.ejb">
+		<level value="INFO"/>
+	</logger>
+	
+	<logger name="gov.doc.isu.shamen.ejb.jms">
+		<level value="INFO"/>
+	</logger>
+	
+	<logger name="gov.doc.isu.shamen.jms">
+		<level value="INFO"/>
+	</logger>
+	
+	<logger name="gov.doc.isu.taglib" additivity="false">
+		<level value="OFF"/>
+	</logger>
+
+	<logger name="gov.doc.isu.dwarf.taglib.displaytag.filter.ResponseOverrideFilter" additivity="false">
+		<level value="INFO"/>
+		<appender-ref ref="responseOverrideFilter"/>
+	</logger>
+
+	<logger name="gov.doc.isu.filters.HttpRequestFilter" additivity="false">
+		<level value="INFO"/>
+		<appender-ref ref="HTTPRequestFilter"/>
+	</logger>
+
+	<!-- Loggers for MOCIS User status log -->
+	<logger name="gov.doc.isu.session.listeners.UserStatusSessionListener" additivity="false">
+		<level value="INFO"/>
+		<appender-ref ref="userStatusSessionLog"/>
+	</logger>
+
+	<root>
+		<level value="INFO"/>
+		<appender-ref ref="appLog"/>
+	</root>
+
+</log4j:configuration>

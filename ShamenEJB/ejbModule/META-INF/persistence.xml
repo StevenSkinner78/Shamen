@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd" version="2.1">
+	<persistence-unit name="ShamenJPA" transaction-type="JTA">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<jta-data-source>jdbc/modocshamen</jta-data-source>
+
+		<class>gov.doc.isu.shamen.jpa.entity.ApplicationEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.ApplicationInstanceEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.ApplicationStatusCodeEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.ApplicationTypeCodeEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.AuthorizedUserEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.BatchAppCollectionEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.BatchAppEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.BatchTypeCodeEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.ClusterControlEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.ControllerEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.ControllerStatusCodeEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.FrequencyCodeEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.FrequencyTypeCodeEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.RepeatCodeEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.ResultCodeEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.RunStatusEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.ScheduleEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.StatusCodeEntity</class>
+		<class>gov.doc.isu.shamen.jpa.entity.SystemEntity</class>
+
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<property name="eclipselink.target-server" value="WebSphere_7" />
+			<property name="eclipselink.target-database" value="SQLServer" />
+			<property name="eclipselink.validate-existence" value="true" />
+			<property name="eclipselink.logging.level" value="OFF" />
+			<property name="eclipselink.logging.logger" value="DefaultLogger" />
+			<property name="eclipselink.logging.level.sql" value="OFF"/>
+			<property name="eclipselink.logging.parameters" value="false"/>
+			<property name="eclipselink.logging.thread" value="true" />
+			<property name="eclipselink.logging.exceptions" value="true"/>
+			<property name="eclipselink.weaving" value="true" />
+			<property name="eclipselink.session-name" value="ShamenJPA_Session" />
+			<property name="eclipselink.jdbc.bind-parameters" value="true" />
+			<property name="eclipselink.jdbc.cache-statements" value="true" />
+			<property name="eclipselink.jdbc.native-sql" value="true" />
+			<property name="eclipselink.deploy-on-startup" value="true" />
+			<property name="eclipselink.cache.shared.default" value="false"/>
+		</properties>
+	</persistence-unit>
+
+</persistence>

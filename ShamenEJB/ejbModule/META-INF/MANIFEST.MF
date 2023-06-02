@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Class-Path: eclipselink.jar 
+ javax.persistence.jar 
+ com.ibm.ws.sib.client.thin.jms_9.0.jar 
+ com.ibm.ws.orb_9.0.jar 
+ com.ibm.ws.ejb.thinclient_9.0.jar 
+ log4j-1.2.15.jar 
+ shamen-client-plugin-2.1.2.jar
+

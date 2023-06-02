@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ejb-jar-bnd xmlns="http://websphere.ibm.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://websphere.ibm.com/xml/ns/javaee http://websphere.ibm.com/xml/ns/javaee/ibm-ejb-jar-bnd_1_0.xsd" version="1.0">
+    <message-driven name="ShamenJMSConsumer">
+        <jca-adapter activation-spec-binding-name="jms/ShamenJMSConsumer" destination-binding-name="CO.Shamen.REQST" />
+        
+    </message-driven>
+    <message-driven name="ShamenJmsApplicationConsumer">
+        <jca-adapter activation-spec-binding-name="jms/ShamenJmsApplicationConsumer" destination-binding-name="CO.ShamWeb.REQST" />
+        
+    </message-driven>
+    
+    <session name="EmailBean">
+        <resource-ref name="mail/session1" binding-name="mail/session1" />
+    </session>
+      
+    
+    <session name="ControllerStatusUpdaterBean">
+        <resource-ref name="CO_SconT" binding-name="CO_SconT" />
+        <message-destination-ref name="CO.Control.TOPIC" binding-name="CO.Control.TOPIC" />
+    </session>
+    <session name="JmsManagerBean">
+        <resource-ref name="CO_SconT" binding-name="CO_SconT" />
+        <message-destination-ref name="CO.Control.TOPIC" binding-name="CO.Control.TOPIC" />
+    </session>
+   
+    <session name="ShamenScheduleBean">
+     <resource-ref name="CO_SconT" binding-name="CO_SconT" />
+        <message-destination-ref name="CO.WebApp.TOPIC" binding-name="CO.WebApp.TOPIC" />
+        </session>
+         <session name="ApplicationStatusUpdaterBean"> 
+     <resource-ref name="CO_SconT" binding-name="CO_SconT" />
+        <message-destination-ref name="CO.WebApp.TOPIC" binding-name="CO.WebApp.TOPIC" />
+        </session>
+     <session name="JmsStatusBean">
+     	<resource-ref name="CO_SconT" binding-name="CO_SconT" />
+     </session>
+</ejb-jar-bnd>

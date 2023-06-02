@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" metadata-complete="true">
+	<display-name>ShamenWeb</display-name>
+	<filter>
+		<filter-name>SessionSecurityFilter</filter-name>
+		<filter-class>gov.doc.isu.filters.SessionSecurityFilter</filter-class>
+	</filter>
+
+	<filter>
+		<filter-name>SecurityFilter</filter-name>
+		<filter-class>gov.doc.isu.filters.SecurityFilter</filter-class>
+	</filter>
+	<filter>
+		<filter-name>JmsStatusFilter</filter-name>
+		<filter-class>gov.doc.isu.filters.JmsStatusFilter</filter-class>
+	</filter>
+	
+	<filter>
+		<filter-name>HttpRequestFilter</filter-name>
+		<filter-class>gov.doc.isu.filters.HttpRequestFilter</filter-class>
+		<init-param>
+			<param-name>logonURL</param-name>
+			<!-- This should be your first redirect page or logon page -->
+			<param-value>/index.jsp</param-value>
+		</init-param>
+	</filter>
+
+	<!-- Filter for display table -->
+	<filter>
+		<filter-name>ResponseOverrideFilter</filter-name>
+		<filter-class>gov.doc.isu.dwarf.taglib.displaytag.filter.ResponseOverrideFilter</filter-class>
+	</filter>
+
+	<!-- Filter Mappings -->
+	<filter-mapping>
+		<filter-name>SessionSecurityFilter</filter-name>
+		<url-pattern>/Logon.do</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>SecurityFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>HttpRequestFilter</filter-name>
+		<servlet-name>action</servlet-name>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>JmsStatusFilter</filter-name>
+		<servlet-name>action</servlet-name>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>ResponseOverrideFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>ResponseOverrideFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+
+	<!-- =================== Application Context Listener ================== -->
+	<listener>
+		<listener-class>gov.doc.isu.servlet.listeners.ApplicationContextListener</listener-class>
+	</listener>
+	<!-- =================== User Status Session Listener ================== -->
+	<listener>
+		<listener-class>gov.doc.isu.session.listeners.UserStatusSessionListener</listener-class>
+	</listener>
+
+	<!-- Standard Action Servlet Configuration (with debugging) -->
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>3</param-value>
+		</init-param>
+		<init-param>
+			<param-name>detail</param-name>
+			<param-value>3</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+<!-- 	<servlet> -->
+<!-- 		<description>Used to set up the JMS Listener</description> -->
+<!-- 		<display-name>JmsSetUp</display-name> -->
+<!-- 		<servlet-name>JmsSetUp</servlet-name> -->
+<!-- 		<servlet-class>gov.doc.isu.shamen.servlet.JmsSetUp</servlet-class> -->
+<!-- 		<load-on-startup>1</load-on-startup> -->
+<!-- 	</servlet> -->
+
+	<!-- Standard Action Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>JmsSetUp</servlet-name> -->
+<!-- 		<url-pattern> -->
+<!-- 		/JmsSetUp</url-pattern> -->
+<!-- 	</servlet-mapping> -->
+
+	<!-- Session Configuration -->
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<!-- The Usual Welcome File List -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- Error Pages -->
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/jsp/error/error.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>400</error-code>
+		<location>/jsp/error/400.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>401</error-code>
+		<location>/jsp/error/401.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>403</error-code>
+		<location>/jsp/error/403.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/jsp/error/404.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>422</error-code>
+		<location>/jsp/error/422.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/jsp/error/500.jsp</location>
+	</error-page>
+
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/jsp/error/error.jsp</location>
+	</error-page>
+
+	<!-- Struts Tag Library Descriptors -->
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/WEB-INF/tlds/struts-bean</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/struts-bean.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/tlds/struts-logic</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/struts-logic.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/tlds/struts-html</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/struts-html.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/tlds/c</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/c.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/tlds/struts-tiles</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/struts-tiles.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/tlds/isu-taglib</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/isu-taglib.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+	
+	
+	
+</web-app>

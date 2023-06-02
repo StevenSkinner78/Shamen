@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+
+	<!-- LAYOUT TEMPLATES -->
+	<!-- Main Template -->
+	<definition name="shamen.mainLayout" path="/jsp/tiles/mainLayout.jsp">
+    		<put name="title" value="Shamen Web Main Layout"/>
+    		<put name="header" value="/jsp/tiles/header.jsp" />
+    		<put name="errors" value="/jsp/common/blank.jsp"/>
+    		<put name="tabs" value="/jsp/tiles/tabs.jsp"/>
+    		<put name="body" value=""/>
+	</definition>
+	
+	<!-- SCREENS -->
+    
+	<!-- Authorized User Display Screen -->
+	<definition name="shamen.authorizedUserDisplay" extends="shamen.mainLayout">
+		<put name="title" value="User Display"/>
+		<put name="errors" value="/jsp/tiles/errorMessages.jsp"/>
+		<put name="body" value="/jsp/authorizedUser/authorizedUser.jsp"/>
+	</definition>
+	
+	<definition name="shamen.authorizedUserInfo" extends="shamen.mainLayout">
+		<put name="title" value="User Information"/>
+		<put name="errors" value="/jsp/tiles/errorMessages.jsp"/>
+		<put name="body" value="/jsp/authorizedUser/authorizedUserInfo.jsp"/>
+	</definition>
+	
+	<!-- Controller Screens -->
+	<definition name="shamen.controllerDisplay" extends="shamen.mainLayout">
+		<put name="title" value="Controller Display"/>
+		<put name="errors" value="/jsp/tiles/errorMessages.jsp"/>
+		<put name="pathToDetail" value="controllerDetailAction.do?method=addController"/>
+		<put name="body" value="/jsp/controller/controllerList.jsp"/>
+	</definition>
+	
+	<definition name="shamen.controllerInfo" extends="shamen.mainLayout">
+		<put name="title" value="Controller Information"/>
+		<put name="errors" value="/jsp/tiles/errorMessages.jsp"/>
+		<put name="body" value="/jsp/controller/controllerInfo.jsp"/>
+	</definition>
+	
+	<!-- Batch App Screens -->
+    <definition name="shamen.batchDisplay" extends="shamen.mainLayout">
+        <put name="title" value="Batch Application Display"/>
+        <put name="errors" value="/jsp/tiles/errorMessages.jsp"/>
+        <put name="pathToDetail" value="batchDetailAction.do?method=addBatch"/>
+        <put name="body" value="/jsp/batch/batchList.jsp"/>
+    </definition>
+    
+    <definition name="shamen.batchInfo" extends="shamen.mainLayout">
+        <put name="title" value="Batch Application Information"/>
+        <put name="errors" value="/jsp/tiles/errorMessages.jsp"/>
+        <put name="body" value="/jsp/batch/batchInfo.jsp"/>
+    </definition>
+    
+     <definition name="shamen.batchCollectionDisplay" extends="shamen.mainLayout">
+        <put name="title" value="Batch Collection List"/>
+        <put name="errors" value="/jsp/tiles/errorMessages.jsp"/>
+        <put name="pathToDetail" value="batchCollectionDetailAction.do?method=addBatch"/>
+        <put name="body" value="/jsp/batch/batchCollectionList.jsp"/>
+    </definition>
+    
+     <definition name="shamen.batchCollection" extends="shamen.mainLayout">
+        <put name="title" value="Batch Collection Information"/>
+        <put name="errors" value="/jsp/tiles/errorMessages.jsp"/>
+        <put name="body" value="/jsp/batch/batchCollectionInfo.jsp"/>
+    </definition>
+    
+    <!-- Run Status Screens -->
+    <definition name="shamen.statusDisplay" extends="shamen.mainLayout">
+        <put name="title" value="Run Status Display"/>
+        <put name="errors" value="/jsp/tiles/errorMessages.jsp"/>
+        <put name="body" value="/jsp/status/statusList.jsp"/>
+    </definition>
+    
+	<!-- Application Screens -->
+    <definition name="shamen.applicationDisplay" extends="shamen.mainLayout">
+        <put name="title" value="Application Display"/>
+        <put name="errors" value="/jsp/tiles/errorMessages.jsp"/>
+        <put name="pathToDetail" value="applicationDetailAction.do?method=addApplication"/>
+        <put name="body" value="/jsp/application/applicationList.jsp"/>
+    </definition>
+    
+    <definition name="shamen.applicationInfo" extends="shamen.mainLayout">
+        <put name="title" value="Application Information"/>
+        <put name="errors" value="/jsp/tiles/errorMessages.jsp"/>
+        <put name="body" value="/jsp/application/applicationInfo.jsp"/>
+    </definition>
+    
+    <!-- Cover Screen -->
+    <definition name="shamen.overviewInfo" extends="shamen.mainLayout">
+        <put name="title" value="Overview"/>
+        <put name="errors" value="/jsp/tiles/errorMessages.jsp"/>
+        <put name="pathToDetail" value="overviewAction.do?method=cover"/>
+        <put name="body" value="/jsp/cover/overviewInfo.jsp"/>
+    </definition>
+    
+    <!-- Calendar Screen -->
+    <definition name="shamen.calendarInfo" extends="shamen.mainLayout">
+        <put name="title" value="Batch App Schedule Calendar"/>
+        <put name="errors" value="/jsp/tiles/errorMessages.jsp"/>
+        <put name="pathToDetail" value="calendarAction.do?method=showCalendar"/>
+        <put name="body" value="/jsp/calendar/calendarInfo.jsp"/>
+    </definition>
+
+	<!-- System Screens -->
+	<definition name="shamen.systemDisplay" extends="shamen.mainLayout">
+		<put name="title" value="System Display"/>
+		<put name="errors" value="/jsp/tiles/errorMessages.jsp"/>
+		<put name="pathToDetail" value="systemDetailAction.do?method=addSystem"/>
+		<put name="body" value="/jsp/system/systemList.jsp"/>
+	</definition>  
+	  
+	<definition name="shamen.systemInfo" extends="shamen.mainLayout">
+		<put name="title" value="System Information"/>
+		<put name="errors" value="/jsp/tiles/errorMessages.jsp"/>
+		<put name="body" value="/jsp/system/systemInfo.jsp"/>
+	</definition>
+	
+	<!-- Stats Screen -->
+    <definition name="shamen.statDisplay" extends="shamen.mainLayout">
+        <put name="title" value="Misc Stat Display"/>
+        <put name="errors" value="/jsp/tiles/errorMessages.jsp"/>
+        <put name="body" value="/jsp/stat/statDetail.jsp"/>
+    </definition>
+</tiles-definitions>

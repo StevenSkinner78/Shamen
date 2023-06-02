@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+ <!-- ========== Form Bean Definitions ================= -->
+<form-beans>
+ 	<form-bean name="logonForm" type="gov.doc.isu.shamen.form.ApplicationStartForm"/>
+
+	<form-bean name="userForm" type="gov.doc.isu.shamen.form.AuthorizedUserForm"/>
+	
+	<form-bean name="controllerForm" type="gov.doc.isu.shamen.form.ControllerForm"/>
+	
+	<form-bean name="batchForm" type="gov.doc.isu.shamen.form.BatchAppForm"/>
+	
+	<form-bean name="batchCollectionForm" type="gov.doc.isu.shamen.form.BatchAppCollectionForm"/>
+	
+	<form-bean name="statusForm" type="gov.doc.isu.shamen.form.RunStatusForm"/>
+	
+	<form-bean name="applicationForm" type="gov.doc.isu.shamen.form.ApplicationForm"/>
+	
+	<form-bean name="overviewForm" type="gov.doc.isu.shamen.form.OverviewForm"/>
+	
+	<form-bean name="calendarForm" type="gov.doc.isu.shamen.form.CalendarForm"/>
+	
+	<form-bean name="systemForm" type="gov.doc.isu.shamen.form.SystemForm"/>
+	
+	<form-bean name="statForm" type="gov.doc.isu.shamen.form.StatForm"/>
+</form-beans>
+ <global-exceptions/>
+ 
+ <!-- ========== Global Forward Definitions ===================== -->
+	 <global-forwards>
+	 	<forward name="logon" path="/Logon.do"/>
+	 	
+	 	<forward name="restart" path="/logonAction.do?method=logOff" redirect="true"/>
+	 	
+	 	<forward name="Failure" path="/jsp/error/error.jsp" redirect="true"/>
+	 	
+	 	<!-- ========== Caller Forward Definitions ===================== -->
+	 	<forward  name="system" path="/systemDetailAction.do?method=editSystem" redirect="true"/>
+	 	<forward  name="applicationList" path="/applicationAction.do?method=list" redirect="true"/>
+	 	<forward  name="applicationInfo" path="/applicationDetailAction.do?method=editApplication" redirect="true"/>
+	 	<forward  name="batchList" path="/batchAction.do?method=list" redirect="true"/>
+	 	<forward  name="batchInfo" path="/batchDetailAction.do?method=editBatch" redirect="true"/>
+	 	<forward  name="batchCollectionInfo" path="/batchCollectionDetailAction.do?method=editBatch" redirect="true"/>
+        <forward  name="controllerList" path="/controllerAction.do?method=list" redirect="true"/>
+        <forward  name="runStatusList" path="/statusAction.do?method=list" redirect="true"/>
+        <forward  name="controllerInfo" path="/controllerDetailAction.do?method=editController" redirect="true"/>
+        <forward  name="calendar" path="/calendarAction.do?method=showCalendar" redirect="true"/>
+       	<forward  name="authorizedUserInfo" path="/userDetailAction.do?method=editView" redirect="true"/>
+       	<forward  name="statsInfo" path="/statDetailAction.do?method=resetStats" redirect="true"/>
+       	<forward  name="userStats" path="/statDetailAction.do?method=loadUserData" redirect="true"/>
+        <!-- ========== Global Forward Definitions ===================== -->
+        
+	 </global-forwards>
+
+<!-- ========== Global Forward Definitions ===================== -->
+<action-mappings>
+	<action path="/Logon" forward="/jsp/logon/logon.jsp"/>
+ 	<action path="/logonAction"
+	        type="gov.doc.isu.shamen.action.ApplicationStartAction"
+            parameter="method"
+            name="logonForm"
+            scope="session" 
+            roles="ADMN,USER"
+            validate="false"
+            input="/jsp/logon/logon.jsp">
+    	    <forward name="success" path="/overviewAction.do?method=resetCover" redirect="true"/>
+    	    <forward name="logoff" path="/jsp/logon/logon.jsp"/>	
+    </action>    
+    <action path="/userAction"
+	        type="gov.doc.isu.shamen.action.AuthorizedUserAction"
+            parameter="method"
+            name="userForm"
+            validate="false"
+            scope="session"
+            roles="ADMN"
+            input="shamen.authorizedUserDisplay">
+    	    <forward  name="List" path="shamen.authorizedUserDisplay"/>
+    	    <forward  name="Refresh" path="/userAction.do?method=list" redirect="true"/>
+    </action>
+    <action path="/userDetailAction"
+	        type="gov.doc.isu.shamen.action.AuthorizedUserAction"
+            parameter="method"
+            name="userForm"
+            validate="false"
+            scope="session"
+            roles="ADMN"
+            input="shamen.authorizedUserInfo">
+    	    <forward  name="Refresh" path="/userAction.do?method=list" redirect="true"/>
+    	    <forward  name="editUser" path="shamen.authorizedUserInfo" redirect="true"/>
+    	    <forward  name="Cancelled" path="/userAction.do?method=list" redirect="true"/>
+    </action>
+    <action path="/controllerAction"
+	        type="gov.doc.isu.shamen.action.ControllerAction"
+            parameter="method"
+            name="controllerForm"
+            validate="false"
+            scope="session"
+            roles="ADMN,USER"
+            input="shamen.controllerDisplay">
+    	    <forward  name="List" path="shamen.controllerDisplay"/>
+    	    <forward  name="Refresh" path="/controllerAction.do?method=list" redirect="true"/>
+    </action>  
+    
+     <action path="/controllerDetailAction"
+	        type="gov.doc.isu.shamen.action.ControllerDetailAction"
+            parameter="method"
+            name="controllerForm"
+            validate="false"
+            scope="session"
+            roles="ADMN,USER"
+            input="shamen.controllerInfo">
+    	    <forward  name="Refresh" path="/controllerAction.do?method=list" redirect="true"/>
+    	    <forward  name="editController" path="shamen.controllerInfo"/>
+    	    <forward  name="Cancelled" path="/controllerAction.do?method=list" redirect="true"/>
+    </action>
+    
+    <action path="/batchAction"
+            type="gov.doc.isu.shamen.action.BatchAppAction"
+            parameter="method"
+            name="batchForm"
+            validate="false"
+            scope="session"
+            roles="ADMN,USER"
+            input="shamen.batchDisplay">
+            <forward  name="List" path="shamen.batchDisplay"/>
+            <forward  name="Refresh" path="/batchAction.do?method=list" redirect="true"/>
+            <forward  name="viewStatusList" path="/statusAction.do?method=list" redirect="true"/>
+    </action>  
+    
+     <action path="/batchDetailAction"
+            type="gov.doc.isu.shamen.action.BatchAppDetailAction"
+            parameter="method"
+            name="batchForm"
+            validate="false"
+            scope="session"
+            roles="ADMN,USER"
+            input="shamen.batchInfo">
+            <forward  name="Refresh" path="/batchAction.do?method=list" redirect="true"/>
+            <forward  name="editBatch" path="shamen.batchInfo"/>
+            <forward  name="editBatchCollection" path="shamen.batchCollection"/>
+            <forward  name="Cancelled" path="/batchAction.do?method=list" redirect="true"/>
+    </action>   
+        
+     <action path="/batchCollectionAction"
+            type="gov.doc.isu.shamen.action.BatchAppCollectionAction"
+            parameter="method"
+            name="batchCollectionForm"
+            validate="false"
+            scope="session"
+            roles="ADMN,USER"
+            input="shamen.batchCollectionDisplay">
+            <forward  name="List" path="shamen.batchCollectionDisplay"/>
+            <forward  name="Refresh" path="/batchCollectionAction.do?method=list" redirect="true"/>
+            <forward  name="viewStatusList" path="/statusAction.do?method=list" redirect="true"/>
+    </action>  
+    
+     <action path="/batchCollectionDetailAction"
+            type="gov.doc.isu.shamen.action.BatchAppCollectionDetailAction"
+            parameter="method"
+            name="batchCollectionForm"
+            validate="false"
+            scope="session"
+            roles="ADMN,USER"
+            input="shamen.batchCollection">
+            <forward  name="Refresh" path="/batchCollectionAction.do?method=list" redirect="true"/>
+            <forward  name="editBatchCollection" path="shamen.batchCollection"/>
+             <forward  name="batchCollectionList" path="/batchCollectionAction.do?method=list" redirect="true"/>
+            <forward  name="Cancelled" path="/batchCollectionAction.do?method=list" redirect="true"/>
+    </action>     
+    
+    <action path="/statusAction"
+            type="gov.doc.isu.shamen.action.RunStatusAction"
+            parameter="method"
+            name="statusForm"
+            validate="false"
+            scope="session"
+            roles="ADMN,USER"
+            input="shamen.statusDisplay">
+            <forward  name="List" path="shamen.statusDisplay"/>
+            <forward  name="Refresh" path="/statusAction.do?method=list" redirect="true"/>
+    </action> 
+    
+    <action path="/statDetailAction"
+            type="gov.doc.isu.shamen.action.StatDetailAction"
+            parameter="method"
+            name="statForm"
+            validate="false"
+            scope="session"
+            roles="ADMN,USER"
+            input="shamen.statDisplay">           
+            <forward  name="Detail" path="shamen.statDisplay"/>
+            <forward  name="Refresh" path="/statDetailAction.do?method=showStats" redirect="true"/>
+    </action> 
+    
+    <action path="/applicationAction"
+            type="gov.doc.isu.shamen.action.ApplicationAction"
+            parameter="method"
+            name="applicationForm"
+            validate="false"
+            scope="session"
+            roles="ADMN,USER"
+            input="shamen.applicationDisplay">
+            <forward  name="List" path="shamen.applicationDisplay"/>
+            <forward  name="Refresh" path="/applicationAction.do?method=list" redirect="true"/>
+    </action> 
+    
+    <action path="/applicationDetailAction"
+            type="gov.doc.isu.shamen.action.ApplicationDetailAction"
+            parameter="method"
+            name="applicationForm"
+            validate="false"
+            scope="session"
+            roles="ADMN,USER"
+            input="shamen.applicationInfo">
+            <forward  name="Refresh" path="/applicationAction.do?method=list" redirect="true"/>
+            <forward  name="editApplication" path="shamen.applicationInfo"/>
+            <forward  name="Cancelled" path="/applicationAction.do?method=list" redirect="true"/>
+    </action> 
+    
+    <action path="/overviewAction"
+            type="gov.doc.isu.shamen.action.OverviewAction"
+            parameter="method"
+            name="overviewForm"
+            validate="false"
+            scope="session"
+            roles="ADMN,USER"
+            input="shamen.overviewInfo">
+            <forward  name="Overview" path="shamen.overviewInfo"/>
+            <forward  name="Refresh" path="/overviewAction.do?method=cover" redirect="true"/>
+    </action>  
+    
+     <action path="/calendarAction"
+            type="gov.doc.isu.shamen.action.CalendarAction"
+            parameter="method"
+            name="calendarForm"
+            validate="false"
+            scope="session"
+            roles="ADMN,USER"
+            input="shamen.calendarInfo">
+            <forward  name="showCalendar" path="shamen.calendarInfo"/>
+            <forward  name="Refresh" path="/calendarAction.do?method=showCalendar" redirect="true"/>
+    </action>  
+    
+    <action path="/systemAction"
+	        type="gov.doc.isu.shamen.action.SystemAction"
+            parameter="method"
+            name="systemForm"
+            validate="false"
+            scope="session"
+            roles="ADMN,USER"
+            input="shamen.systemDisplay">
+    	    <forward  name="List" path="shamen.systemDisplay"/>
+    	    <forward  name="Refresh" path="/systemAction.do?method=list" redirect="true"/>
+    </action>  
+    
+     <action path="/systemDetailAction"
+	        type="gov.doc.isu.shamen.action.SystemDetailAction"
+            parameter="method"
+            name="systemForm"
+            validate="false"
+            scope="session"
+            roles="ADMN,USER"
+            input="shamen.systemInfo">
+    	    <forward  name="Refresh" path="/systemAction.do?method=list" redirect="true"/>
+    	    <forward  name="editSystem" path="shamen.systemInfo"/>
+    	    <forward  name="Cancelled" path="/systemAction.do?method=list" redirect="true"/>
+    	    <forward  name="overviewList" path="/overviewAction.do?method=resetCover"/>
+    	    <forward  name="systemList" path="/systemAction.do?method=list" redirect="true"/>
+    </action>
+                 
+ </action-mappings>
+  <controller processorClass="gov.doc.isu.shamen.processor.ShamenRequestProcessor"/>
+  
+  <!-- ========================= Message Resources Definitions ===============================-->
+  <message-resources parameter="gov.doc.isu.shamen.resources.MessageResources" null="false"/>
+  <message-resources key="helpMsgs"  parameter="Help" null="false"/>
+  
+  <!-- ========================= Tiles plugin ===============================-->
+
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+    <!-- ========================= Menu plugin ===============================-->
+     <plug-in className="net.sf.navigator.menu.MenuPlugIn">
+       <set-property property="menuConfig" value="/WEB-INF/menu-config.xml"/>
+  	 </plug-in>
+  	 
+   <!-- ========================= Validator plugin ================================= -->
+
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+		<set-property property="stopOnFirstError" value="false"/>
+    </plug-in>
+   
+</struts-config>

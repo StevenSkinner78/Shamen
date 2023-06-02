@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+                        "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_2.dtd">
+<taglib>
+	<tlib-version>1.1</tlib-version>
+	<jsp-version>1.2</jsp-version>
+	<short-name>shamen-client</short-name>
+	<uri>http://gov.doc.isu.shamen.taglib/shamen</uri>
+	<display-name>Shamen Client: Tag Library</display-name>
+	<tag>
+		<name>batchAppHandler</name>
+		<tag-class>gov.doc.isu.shamen.taglib.BatchAppHandlerTag</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+				This tag constructs the client app's batch listing
+		</description>
+		<attribute>
+			<name>homeURL</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+			<description>
+				This is the path of the page containing this tag.  It does not have to contain the context path.
+			</description>
+		</attribute>
+		<attribute>
+			<name>webApp</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This is the name of the client web application.  It must match the name of the web application in ShamenWeb. This is not required.  If not used, the tag will get the value from ShamenApplicationResources.properties.
+			</description>
+		</attribute>
+		<attribute>
+			<name>environment</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This is the environment of the client web application.  It must match the environment of the web application in ShamenWeb.  This is not required.  If not used, the tag will get the value from ShamenApplicationResources.properties.
+			</description>
+		</attribute>
+		<attribute>
+			<name>hasRunnableJobs</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This is a Y or N value that determines whether the child BatchAppTag has a allowRun batch job so the BatchAppHandlerTag will show the last column in the list table. It defaults to "Y".
+			</description>
+		</attribute>
+		<attribute>
+			<name>userId</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				This is the user that will be assigned to any batch job runs. This is a scope element that will default to requestScope. Available scope: pageScope,requestScope,sessionScope,applicationScope.
+			</description>
+		</attribute>
+		<attribute>
+			<name>tableId</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				This is the html id attribute of the table.
+			</description>
+		</attribute>
+		<attribute>
+			<name>listPageSize</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>int</type>
+			<description>
+				This is the page size of the Batch App List.
+			</description>
+		</attribute>
+		<attribute>
+			<name>runStatusListPageSize</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>int</type>
+			<description>
+				This is the page size of the Batch App's Run Status List.
+			</description>
+		</attribute>
+		
+	</tag>
+	<tag>
+		<name>batchApp</name>
+		<tag-class>gov.doc.isu.shamen.taglib.BatchAppTag</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+				This tag constructs the client app's batch application
+		</description>
+		<attribute>
+			<name>batchName</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+			<description>
+				This is the name of the batch job to display on this page. The name of the batch job must be present in ShamenWeb to display on this screen.
+			</description>
+		</attribute>
+		<attribute>
+			<name>displayName</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This is the name that will be displayed in the list.
+			</description>
+		</attribute>
+		<attribute>
+			<name>allowRun</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This is a Y or N value that determines whether the tag will allow manual batch job run. If it is a Y, the USER parameter from the parent BatchAppHandlerTag will be passed as the executing user. The default is "N".
+			</description>
+		</attribute>
+		<attribute>
+			<name>useParameterInput</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This is a Y or N value will allow the manual run of batch application to use the parameter input elements value. The default is "Y".
+			</description>
+		</attribute>
+		<attribute>
+			<name>defaultParameter</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				This is a comma separated list of parameter(s) to attach to the launch of the batch application.
+			</description>
+		</attribute>
+		<attribute>
+			<name>customMessage</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				This is a custom message that can be displayed in the Batch Parameters div for the user. It can be any text and it will show up in a yellow-ish color.
+			</description>
+			
+		</attribute>
+		<attribute>
+			<name>showDefaultMessage</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				This is a Y or N value that determines whether the tag will show the default batch parameters message for batch job runs. It will default to Y.
+			</description>
+			
+		</attribute>	
+	</tag>
+	<tag>
+		<name>clientNotification</name>
+		<tag-class>gov.doc.isu.shamen.taglib.ShameClientNotificationTag</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+				This tag constructs the client application notification banner
+		</description>
+		<attribute>
+			<name>showNotificationIcon</name>
+			<required>false</required>
+			<type>boolean</type>
+			<description>
+				This boolean attribute will show the notification icon on the Shamen Client Notification Tag Banner. Default to true.
+			</description>
+		</attribute>
+		<attribute>
+			<name>showHeaderText</name>
+			<required>false</required>
+			<type>boolean</type>
+			<description>
+				This boolean attribute will tell tag to show the header text on the Shamen Client Notification Tag Banner. Default to true.
+			</description>
+		</attribute>
+		<attribute>
+			<name>headerText</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This attribute allows the developer to add a header text value to Shamen Client Notification Tag Banner or use default "ATTENTION!".
+			</description>
+		</attribute>
+		<attribute>
+			<name>backgroundColor</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This attribute allows the developer to add a background color to info tag or use Shamen Client default background color of #2F91E1 if nothing provided.
+			</description>
+		</attribute>
+		<attribute>
+			<name>notificationIconColor</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This attribute allows the developer to add a color to the notification icon or use Shamen Client default color of #FFF if nothing provided.
+			</description>
+		</attribute>
+		<attribute>
+			<name>notificationIconSize</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This attribute allows the developer to add a size to the notification icon or use Shamen Client default size of 24px if nothing provided.
+			</description>
+		</attribute>
+		<attribute>
+			<name>headerTextColor</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This attribute allows the developer to add a header text color to info tag or use Shamen Client default text color of #FFF if nothing provided.
+			</description>
+		</attribute>
+		<attribute>
+			<name>headerFontSize</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This attribute allows the developer to add a header font size to info tag or use Shamen Client default font size of 24px if nothing provided.
+			</description>
+		</attribute>
+		<attribute>
+			<name>headerFontWeight</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This attribute allows the developer to add a header font weight to info tag or use Shamen Client default font weight of 700 if nothing provided.
+			</description>
+		</attribute>
+		<attribute>
+			<name>textColor</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This attribute allows the developer to add a text color to info tag or use Shamen Client default text color of #FFF if nothing provided.
+			</description>
+		</attribute>
+		<attribute>
+			<name>fontSize</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This attribute allows the developer to add a font size to info tag or use Shamen Client default font size of 15px if nothing provided.
+			</description>
+		</attribute>
+		<attribute>
+			<name>fontWeight</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+			<description>
+				This attribute allows the developer to add a font weight to info tag or use Shamen Client default font weight of 500 if nothing provided.
+			</description>
+		</attribute>
+	</tag>
+	
+</taglib>
